@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "rg" {
-  name     = "${var.application_name}-${var.environment}-rg"
+  name     = "devops-rg"
   location = var.location
 }
 
