@@ -53,7 +53,7 @@ stages:
       displayName: 'Install Terraform'
     - task: AzureCLI@2
       inputs:
-        azureSubscription: 'Pipeline-Service-connect'
+        azureSubscription: 'Pipeline-Service-Connection'
         scriptType: bash
         scriptLocation: inlineScript
         workingDirectory: $(System.DefaultWorkingDirectory)/terraform
@@ -63,7 +63,7 @@ stages:
           export ARM_CLIENT_SECRET=$servicePrincipalKey
           export ARM_TENANT_ID=$tenantId
           export ARM_SUBSCRIPTION_ID=$(az account show --query id -o tsv)   
-             
+
           echo "##[group]Terraform Init/Plan/Apply"
           terraform init -input=false 
           terraform plan -input=false -var-file="envs/dev.tfvars"
