@@ -40,6 +40,11 @@ stages:
         ls -al terraform/modules/compute/
       displayName: 'Extract SSH Public Key for Terraform'
 
+    - script: |
+        # Install Azure CLI (Debian/Ubuntu)
+        curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+      displayName: 'Install Azure CLI'
+
     - task: AzureCLI@2
       inputs:
         azureSubscription: 'Pipeline-Service-connect'
